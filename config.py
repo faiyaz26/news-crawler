@@ -1,7 +1,8 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-MONGO_URI = os.getenv('MONGO_URI', 'mongodb://localhost:27017/isentia')
+MONGO_URI = os.getenv('MONGO_URI', 'mongodb://localhost:27017')
+MONGO_DB = os.getenv('MONGO_DBNAME', 'isentia')
 
 class BaseConfig(object):
     """Base configuration."""
