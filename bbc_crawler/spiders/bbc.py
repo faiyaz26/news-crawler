@@ -39,13 +39,16 @@ class BBCSpider(scrapy.Spider):
 				yield scrapy.Request(absolute_url, callback=self.parse_article)
 
 	def parse_article(self, response):
-		soup = BeautifulSoup(response.body, 'lxml')
+		return self.process_article(response.body, response.url)
+
+	def process_article(self, body, url):
+		soup = BeautifulSoup(body, 'lxml')
 		article_title = soup.find('h1', class_='story-body__h1')
 		if article_title: # Parsing a valid/intended article
 			article = BBCArticle()
-			article['link'] = response.url
+			article['link'] = url
 			article['title'] = article_title.string.strip()
-			article['content'] = self.mercury_parser.parse(response.url).get('content', '')
+			article['content'] = self.mercury_parser.parse(url).get('content', '')
 			article['author'] = ''
 			article['published_at'] = int(soup.find('div', class_='date--v2').attrs.get('data-seconds'))
 			yield article
