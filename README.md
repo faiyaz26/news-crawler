@@ -11,8 +11,8 @@
 2. Create a virtualenv
 3. Install pacakages from requirement.txt `pip install -r requirements.txt`
 4. Run this command `export APP_SETTINGS="config.ProductionConfig"`
-5. Run this command `export MONGO_URI="your mongo uri"`
-6. Run this command `export MONGO_DBNAME="your mongodb name"`
+5. Run these command `export MONGO_URI="your mongo uri"`, `export MONGO_DBNAME="your mongodb name"`
+6. Run this command `export MERCURY_API_KEY='your mercury api key'`
 7. Run this command to crawl the bbc.com, `scrapy crawl bbc_crawler`
 8. Run the server using this command `python manage.py runserver`
 9. Browse `localhost:5000`
