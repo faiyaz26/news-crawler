@@ -34,3 +34,4 @@ class ProductionConfig(BaseConfig):
     """Production configuration."""
     SECRET_KEY = '1234100qweqQQdssf23012'
     DEBUG = False
+

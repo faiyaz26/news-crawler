@@ -1,3 +1,5 @@
+import os
+
 from pymongo import MongoClient, IndexModel
 
 from config import MONGO_URI, MONGO_DB
@@ -7,7 +9,12 @@ class NewsItem(object):
 	db = None
 
 	def __init__(self, mongo_uri=MONGO_URI, mongo_db=MONGO_DB):
-		self.mongo_con = MongoClient(mongo_uri)
+		if 'localhost' in mongo_uri:
+			self.mongo_con = MongoClient(mongo_uri)
+		else: # production
+			cert_file_path = os.path.dirname(os.path.abspath(__file__)) + '/cert.pem'
+			self.mongo_con = MongoClient(mongo_uri, ssl_ca_certs = cert_file_path)
+
 		self.db = self.mongo_con[mongo_db]
 		self.create_indexes()
 	
@@ -34,3 +41,4 @@ class NewsItem(object):
 	def clear(self): #clears the collection
 		self.db.news_items.remove({})
 		return
+
