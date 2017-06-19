@@ -31,3 +31,4 @@ You can do pagination with `page` and `limit` parameter.
 Default value `page=1`, `limit=30`
 
 ## Server Information
+You can check the API endpoint from here: https://fast-shore-63416.herokuapp.com/
