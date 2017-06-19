@@ -32,3 +32,4 @@ Default value `page=1`, `limit=30`
 
 ## Server Information
 You can check the API endpoint from here: https://fast-shore-63416.herokuapp.com/
+Example: https://fast-shore-63416.herokuapp.com/search?q=syria
