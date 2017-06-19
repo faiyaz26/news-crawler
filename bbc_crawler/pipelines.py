@@ -7,20 +7,10 @@
 
 import pymongo
 
-from config import MONGO_URI, MONGO_DB
+from server.article.model import NewsItem
 
 class MongoPipeline(object):
 
-	collection = 'news_items'
-
-	def open_spider(self,spider):
-		self.client = pymongo.MongoClient(MONGO_URI)
-		self.db = self.client[MONGO_DB]
-
-	def close_spider(self, spider):
-		self.client.close()
-
 	def process_item(self, item, spider):
-		self.db[self.collection].insert(dict(item))
+		NewsItem().insert(dict(item))
 		return item
-

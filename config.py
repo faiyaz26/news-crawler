@@ -3,6 +3,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 MONGO_URI = os.getenv('MONGO_URI', 'mongodb://localhost:27017')
 MONGO_DB = os.getenv('MONGO_DBNAME', 'isentia')
+MERCURY_API_KEY = os.getenv('MERCURY_API_KEY', '')
+
 
 class BaseConfig(object):
     """Base configuration."""
@@ -10,9 +12,6 @@ class BaseConfig(object):
     DEBUG = False
     BCRYPT_LOG_ROUNDS = 13
     WTF_CSRF_ENABLED = True
-    MONGO_URI = MONGO_URI
-    MERCURY_API_KEY = os.getenv('MERCURY_API_KEY', '')
-
 
 class DevelopmentConfig(BaseConfig):
     """Development configuration."""

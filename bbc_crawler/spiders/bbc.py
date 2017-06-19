@@ -11,7 +11,7 @@ import scrapy
 
 from bbc_crawler.items import BBCArticle
 from lib.mercury_parser import MarcuryParser
-from bbc_crawler.settings import MERCURY_API_KEY
+from config import MERCURY_API_KEY
 
 class BBCSpider(scrapy.Spider):
 	name = "bbc_crawler"
@@ -50,5 +50,9 @@ class BBCSpider(scrapy.Spider):
 			article['title'] = article_title.string.strip()
 			article['content'] = self.mercury_parser.parse(url).get('content', '')
 			article['author'] = ''
-			article['published_at'] = int(soup.find('div', class_='date--v2').attrs.get('data-seconds'))
+			pub_date = soup.find('div', class_='date--v2')
+			
+			if pub_date:
+				article['published_at'] = int(pub_date.attrs.get('data-seconds', 0))
+			
 			yield article
