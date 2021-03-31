@@ -26,7 +26,7 @@ ipython-genutils==0.2.0
 itsdangerous==0.24
 jedi==0.10.2
 Jinja2==2.9.6
-lxml==4.6.2
+lxml==4.6.3
 MarkupSafe==1.0
 mock==2.0.0
 parsel==1.2.0
